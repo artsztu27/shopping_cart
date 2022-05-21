@@ -1,6 +1,6 @@
 import Title from "common/title.js"
 import { Link } from 'react-router-dom'
-import QuantityBtn from 'components/shoppingPage/quantityBtn'
+import QuantityBtn from 'pages/shoppingPage/quantityBtn'
 import { UseAppContext } from 'contexts/contexts';
 
 import { CheckOutlined } from '@ant-design/icons';

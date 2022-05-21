@@ -15,20 +15,20 @@ const { apiValue:{ user, setUser } } = UseAppContext();
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    login(values.username, values.password).then((data) => {
-      if (data.ok === 0) {
-        return setErrorMessage(data.message);
-      }
-      setAuthToken(data.token);
-      getMe().then((response) => {
-        if (data.ok !== 1) {
-          setAuthToken(null);
-          setErrorMessage(response.toString());
-        }
-        setUser(response.data);
-        navigate("/");
-      });
-    });
+    const data = login(values.username, values.password)
+    if (data.ok === 0) {
+      return setErrorMessage(data.message);
+    }
+    console.log('data = ',data);
+    setAuthToken(data.token);
+    const response = getMe()
+    console.log('response = ',response);
+    if (data.ok !== 1) {
+      setAuthToken(null);
+      setErrorMessage(response.toString());
+    }
+    setUser(response.data);
+    navigate("/");
   }
 
   return (

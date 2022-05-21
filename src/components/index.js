@@ -18,11 +18,10 @@ const App = () => {
   useEffect(() => {
     if (user && getAuthToken) {
       // 有 token 才 call API
-      getMe().then((response) => {
-        if (response.ok) {
-          setUser(response.data);
-        }
-      });
+      const response = getMe()
+      if (response.ok) {
+        setUser(response.data);
+      }
     }
   }, []);
   return (

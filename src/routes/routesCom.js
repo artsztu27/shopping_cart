@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Routes, Navigate, Route } from 'react-router-dom';
-import LoginPage from 'components/loginPage/loginPage';
-import ShoppingPage from 'components/shoppingPage/shoppingPage';
-import ItemDetailPage from 'components/itemDetailPage/itemDetailPage';
-import CheckoutPage from 'components/checkoutPage/checkoutPage';
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from 'pages/loginPage/loginPage';
+import ShoppingPage from 'pages/shoppingPage/shoppingPage';
+import ItemDetailPage from 'pages/itemDetailPage/itemDetailPage';
+import CheckoutPage from 'pages/checkoutPage/checkoutPage';
 import RequireAuth from 'routes/requireAuth';
 
 
@@ -29,7 +29,7 @@ export default class RoutesCom extends Component {
             }
           />
            <Route
-            path="/ItemDetailPage/:id"
+            path="/product/:id"
             element={
               <RequireAuth>
                 <ItemDetailPage />
@@ -44,7 +44,7 @@ export default class RoutesCom extends Component {
              </RequireAuth>
            }
          />
-        <Route path="*" element={ <div className="container"><p>Not Found</p></div>}/>
+        <Route path="*" element={ <LoginPage />}/>
      </Routes>
     );
   }

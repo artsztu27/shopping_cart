@@ -1,22 +1,20 @@
 import {useParams, Link} from "react-router-dom"
 import Title from "common/title.js"
-import QuantityBtn from 'components/shoppingPage/quantityBtn'
+import QuantityBtn from 'pages/shoppingPage/quantityBtn'
 import { useState,useEffect } from "react"
 import { RollbackOutlined } from '@ant-design/icons';
+import { getProduct } from 'apis/WebAPI';
 
 export default function ItemDetailPage() {
     let params = useParams()
     let [productDetail, setProductDetail] = useState(null)
 
     useEffect(()=>{
-         fetch('jsonData/product.json')
-            .then(response => response.json())
-            .then(data => {
-                let productInfo = data.find((element)=>{
-                    return element.id === parseInt(params.id)
-                })
-                setProductDetail(productInfo)
-            })
+        const data = getProduct()
+        let productInfo = data.find((element)=>{
+            return element.id === parseInt(params.id)
+        })
+        setProductDetail(productInfo)
     },[params.id])
 
     return (

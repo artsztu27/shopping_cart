@@ -1,24 +1,19 @@
 
 
 import React,{ useState, useEffect } from 'react';
-import { UseAppContext } from 'contexts/contexts';
 import {Link} from 'react-router-dom'
-import QuantityBtn from 'components/shoppingPage/quantityBtn'
+import QuantityBtn from 'pages/shoppingPage/quantityBtn'
+import { getProduct } from 'apis/WebAPI';
 
 
 const ShoppingIndex = () => {
-  const { apiValue:{ user, setUser } } = UseAppContext();
   let [productList, setProductList] = useState([])
 
-
-  //useEffect hook
   useEffect(()=>{
-      fetch('jsonData/product.json')
-          .then((response) => {
-            console.log(response);
-            return response.json()
-          })
-          .then(data => setProductList(data))
+    const data = getProduct()
+    console.log(data);
+    setProductList(data)
+
   },[])
 
   return (
