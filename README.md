@@ -18,3 +18,9 @@
   |- images 靜態圖
   |- jsonData 靜態資料
 ```
+
+1. Sharing of modules
+2. Permission control of router
+3. The api call uses fake data
+4. The login account password can be freely input at present
+5. readme has a folder structure 
